@@ -1,0 +1,113 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/authors":
+    get:
+      summary: list authors
+      tags:
+      - Authors
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+    post:
+      summary: create author
+      tags:
+      - Authors
+      parameters: []
+      responses:
+        '201':
+          description: successful
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/authors/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show author
+      tags:
+      - Authors
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '404':
+          description: not found
+    patch:
+      summary: update author
+      tags:
+      - Authors
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+    delete:
+      summary: delete author
+      tags:
+      - Authors
+      responses:
+        '204':
+          description: no content
+        '404':
+          description: not found
+servers:
+- url: "{protocol}://{defaultHost}"
+  variables:
+    protocol:
+      default: http
+    defaultHost:
+      default: localhost:3000

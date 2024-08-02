@@ -34,3 +34,6 @@ Style/Documentation:
 
 Rails/HasAndBelongsToMany:
   Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
