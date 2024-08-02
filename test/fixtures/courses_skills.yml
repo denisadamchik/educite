@@ -1,0 +1,15 @@
+ruby_backend:
+  course_id: <%= ActiveRecord::FixtureSet.identify(:ruby_course) %>
+  skill_id: <%= ActiveRecord::FixtureSet.identify(:backend_skill) %>
+
+ruby_rails:
+  course_id: <%= ActiveRecord::FixtureSet.identify(:ruby_course) %>
+  skill_id: <%= ActiveRecord::FixtureSet.identify(:rails_skill) %>
+
+python_backend:
+  course_id: <%= ActiveRecord::FixtureSet.identify(:python_course) %>
+  skill_id: <%= ActiveRecord::FixtureSet.identify(:backend_skill) %>
+
+python_django:
+  course_id: <%= ActiveRecord::FixtureSet.identify(:python_course) %>
+  skill_id: <%= ActiveRecord::FixtureSet.identify(:django_skill) %>

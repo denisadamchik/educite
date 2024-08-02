@@ -1,9 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ruby_course:
+  title: Ruby
+  author: first_author
 
-one:
-  title: Ruby/Rails
-  author: one
-
-two:
-  title: Python/Django
-  author: two
+python_course:
+  title: Python
+  author: second_author
