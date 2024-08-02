@@ -1,24 +1,29 @@
 class CoursesController < ApplicationController
+  before_action :set_author, only: %i[index create]
   before_action :set_course, only: %i[show update destroy]
 
-  # GET /courses
+  # GET /authors/:author_id/courses
   def index
-    @courses = Course.all
+    @courses = @author.courses
 
-    render json: @courses
+    render json: @courses, each_serializer: CourseSerializer, include_skills: false
   end
 
   # GET /courses/1
   def show
-    render json: @course
+    render json: @course, serializer: CourseSerializer
   end
 
-  # POST /courses
+  # POST /authors/:author_id/courses
   def create
-    @course = Course.new(course_params)
+    @course = @author.courses.build(course_params)
 
     if @course.save
-      render json: @course, status: :created, location: @course
+      render json: @course,
+             status: :created,
+             location: @course,
+             serializer: CourseSerializer,
+             include_skills: false
     else
       render json: @course.errors, status: :unprocessable_entity
     end
@@ -27,7 +32,7 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   def update
     if @course.update(course_params)
-      render json: @course
+      render json: @course, serializer: CourseSerializer
     else
       render json: @course.errors, status: :unprocessable_entity
     end
@@ -40,13 +45,15 @@ class CoursesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  def set_author
+    @author = Author.find(params[:author_id])
+  end
+
   def set_course
     @course = Course.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:title, :author_id)
+    params.require(:course).permit(:title, skill_ids: [])
   end
 end

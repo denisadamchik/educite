@@ -104,6 +104,146 @@ paths:
           description: no content
         '404':
           description: not found
+  "/authors/{author_id}/courses":
+    parameters:
+    - name: author_id
+      in: path
+      description: Author ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: list courses for an author
+      tags:
+      - Courses
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    author_id:
+                      type: integer
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+    post:
+      summary: create course
+      tags:
+      - Courses
+      parameters: []
+      responses:
+        '201':
+          description: successful
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                  required:
+                  - title
+              required:
+              - course
+  "/courses/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Course ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: show course
+      tags:
+      - Courses
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  author_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  skills:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+        '404':
+          description: not found
+    patch:
+      summary: update course
+      tags:
+      - Courses
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    skill_ids:
+                      type: array
+                      items:
+                        type: integer
+                  required:
+                  - title
+              required:
+              - course
+    delete:
+      summary: delete course
+      tags:
+      - Courses
+      responses:
+        '204':
+          description: no content
+        '404':
+          description: not found
 servers:
 - url: "{protocol}://{defaultHost}"
   variables:
