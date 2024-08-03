@@ -35,7 +35,7 @@ class AuthorsController < ApplicationController
 
   # DELETE /authors/1
   def destroy
-    @author.destroy!
+    AuthorDestroyer.new(@author).call
   end
 
   private
