@@ -136,9 +136,9 @@ RSpec.describe 'Courses API', type: :request do
 
       response(200, 'successful') do
         let(:author) { Author.create(name: 'John Doe') }
-        let(:course) { Course.create(title: 'Ruby on Rails', author:) }
+        let(:course_record) { Course.create(title: 'Ruby on Rails', author:) }
         let(:skill) { Skill.create(name: 'Ruby') }
-        let(:id) { course.id }
+        let(:id) { course_record.id }
         let(:course) { { course: { title: 'Updated Course', skill_ids: [skill.id] } } }
 
         run_test! do |response|

@@ -46,7 +46,7 @@ RSpec.describe 'Authors API', type: :request do
 
         run_test! do |response|
           data = JSON.parse(response.body)
-          expect(data['name']).to eq('can\'t be blank')
+          expect(data['name']).to eq(["can't be blank"])
         end
       end
     end
