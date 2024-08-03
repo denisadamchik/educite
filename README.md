@@ -1,24 +1,60 @@
-# README
+# Educite
+API-only app for online courses.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting started
 
-Things you may want to cover:
+1. Clone the repository and navigate to the directory:
 
-* Ruby version
+   ```shell
+   $ git clone git@github.com:denisadamchik/educite.git
+   $ cd educite
+   ```
 
-* System dependencies
+2. Install the right Ruby version:
 
-* Configuration
+   ```shell
+   $ grep "ruby \"" Gemfile
+   $ rvm install <version>
+   $ rvm use <version>
+   ```
 
-* Database creation
+3. Install PostgreSQL using [this instruction](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql-linux/).
 
-* Database initialization
+4. Create a role and databases:
 
-* How to run the test suite
+   ```shell
+   $ sudo -u postgres psql < db/postgres/init.sql
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+5. Install dependencies:
 
-* Deployment instructions
+   ```shell
+   $ bundle install
+   ```
 
-* ...
+6. Prepare the database:
+
+   ```shell
+   $ bin/rails db:migrate
+   $ bin/rails db:seed
+   ```
+
+7. Run tests to make sure everything is ok:
+
+    ```shell
+    $ bundle exec rspec
+    ```
+
+8. Run rswag:
+
+    ```shell
+    $ RAILS_ENV=test rails rswag
+    ```
+
+9. Run Rails:
+
+    ```shell
+    $ rails server
+    ```
+
+10. Open <http://localhost:3000/api-docs/index.html>
