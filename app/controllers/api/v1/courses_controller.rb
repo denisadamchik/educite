@@ -1,4 +1,4 @@
-class CoursesController < ApplicationController
+class Api::V1::CoursesController < ApplicationController
   before_action :set_author, only: %i[index create]
   before_action :set_course, only: %i[show update destroy]
 
@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
     if @course.save
       render json: @course,
              status: :created,
-             location: @course,
+             location: api_v1_course_url(@course),
              serializer: CourseSerializer,
              include_skills: false
     else

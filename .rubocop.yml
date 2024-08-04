@@ -37,3 +37,6 @@ Rails/HasAndBelongsToMany:
 
 Metrics/BlockLength:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false

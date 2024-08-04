@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Skills API', type: :request do
-  path '/skills' do
+  path '/api/v1/skills' do
     get('list skills') do
       tags 'Skills'
       produces 'application/json'
@@ -52,7 +52,7 @@ RSpec.describe 'Skills API', type: :request do
     end
   end
 
-  path '/skills/{id}' do
+  path '/api/v1/skills/{id}' do
     parameter name: 'id', in: :path, type: :string, description: 'ID of the skill'
 
     get('show skill') do

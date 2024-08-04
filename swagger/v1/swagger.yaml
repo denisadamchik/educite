@@ -4,7 +4,7 @@ info:
   title: API V1
   version: v1
 paths:
-  "/authors":
+  "/api/v1/authors":
     get:
       summary: list authors
       tags:
@@ -47,7 +47,7 @@ paths:
                   type: string
               required:
               - name
-  "/authors/{id}":
+  "/api/v1/authors/{id}":
     parameters:
     - name: id
       in: path
@@ -104,7 +104,7 @@ paths:
           description: no content
         '404':
           description: not found
-  "/authors/{author_id}/courses":
+  "/api/v1/authors/{author_id}/courses":
     parameters:
     - name: author_id
       in: path
@@ -161,7 +161,7 @@ paths:
                   - title
               required:
               - course
-  "/courses/{id}":
+  "/api/v1/courses/{id}":
     parameters:
     - name: id
       in: path
@@ -244,7 +244,7 @@ paths:
           description: no content
         '404':
           description: not found
-  "/skills":
+  "/api/v1/skills":
     get:
       summary: list skills
       tags:
@@ -287,7 +287,7 @@ paths:
                   type: string
               required:
               - name
-  "/skills/{id}":
+  "/api/v1/skills/{id}":
     parameters:
     - name: id
       in: path

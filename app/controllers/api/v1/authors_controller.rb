@@ -1,4 +1,4 @@
-class AuthorsController < ApplicationController
+class Api::V1::AuthorsController < ApplicationController
   before_action :set_author, only: %i[show update destroy]
 
   # GET /authors
@@ -18,7 +18,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      render json: @author, status: :created, location: @author
+      render json: @author, status: :created, location: api_v1_author_url(@author)
     else
       render json: @author.errors, status: :unprocessable_entity
     end

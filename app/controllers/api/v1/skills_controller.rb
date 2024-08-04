@@ -1,4 +1,4 @@
-class SkillsController < ApplicationController
+class Api::V1::SkillsController < ApplicationController
   before_action :set_skill, only: %i[show update destroy]
 
   # GET /skills
@@ -18,7 +18,7 @@ class SkillsController < ApplicationController
     @skill = Skill.new(skill_params)
 
     if @skill.save
-      render json: @skill, status: :created, location: @skill
+      render json: @skill, status: :created, location: api_v1_skill_url(@skill)
     else
       render json: @skill.errors, status: :unprocessable_entity
     end

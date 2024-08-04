@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Authors API', type: :request do
-  path '/authors' do
+  path '/api/v1/authors' do
     get('list authors') do
       tags 'Authors'
       produces 'application/json'
@@ -52,7 +52,7 @@ RSpec.describe 'Authors API', type: :request do
     end
   end
 
-  path '/authors/{id}' do
+  path '/api/v1/authors/{id}' do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show author') do

@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Courses API', type: :request do
-  path '/authors/{author_id}/courses' do
+  path '/api/v1/authors/{author_id}/courses' do
     parameter name: 'author_id', in: :path, type: :integer, description: 'Author ID'
 
     get('list courses for an author') do
@@ -69,7 +69,7 @@ RSpec.describe 'Courses API', type: :request do
     end
   end
 
-  path '/courses/{id}' do
+  path '/api/v1/courses/{id}' do
     parameter name: 'id', in: :path, type: :integer, description: 'Course ID'
 
     get('show course') do
